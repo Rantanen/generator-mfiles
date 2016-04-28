@@ -1,0 +1,8 @@
+{
+    "extends": [ "mfiles" ],
+    "env": { "node": true },
+    "rules": {
+        "indent": [ "error", 4 ],
+        "quotes": [ "error", "single" ]
+    }
+}
