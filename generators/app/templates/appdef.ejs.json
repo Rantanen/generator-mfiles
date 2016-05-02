@@ -5,7 +5,7 @@
     "environments": {
 <% for( var i = 0; i < environments.length; i++ ) { -%>
         "<%= environments[ i ] %>": {
-            "files": [ "lib/<%= environments[ i ] %>.js" ]
+            "files": [ "lib/<%= environments[ i ] %>.bundle.js" ]
         }<%= i !== environments.length - 1 ? ',' : '' %>
 <% } -%>
     }

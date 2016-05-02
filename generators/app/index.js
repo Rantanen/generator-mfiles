@@ -10,8 +10,8 @@ var MFilesGenerator = yeoman.Base.extend(  {
         var done = this.async();
 
         var projectTypes = [
-            { value: 'uiext', name: 'M-Files Vault Application' },
             { value: 'generic', name: 'Generic JavaScript project' },
+            { value: 'uiext', name: 'M-Files Vault Application' },
         ];
 
         var basicPrompts = [
@@ -86,6 +86,9 @@ var MFilesGenerator = yeoman.Base.extend(  {
         this.fs.copy(
             this.templatePath( 'eslintrc-' + this.props.projectType + '.js' ),
             this.destinationPath( '.eslintrc.js' ) );
+        this.fs.copy(
+            this.templatePath( 'editorconfig' ),
+            this.destinationPath( '.editorconfig' ) );
 
         this.fs.copyTpl(
             this.templatePath( 'gulpfile-' + this.props.projectType + '.ejs.js' ),

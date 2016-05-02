@@ -5,6 +5,7 @@
 var gulp = require( "gulp" );
 var gutil = require( "gulp-util" );
 var eslint = require( "gulp-eslint" );
+var insert = require( "gulp-insert" );
 var rename = require( "gulp-rename" );
 var appdef = require( "gulp-mfiles-appdef" );
 var zip = require( "gulp-zip" );
@@ -34,11 +35,13 @@ var bundle = function( plugins ) {
 				debug: true,
 				cache: {},
 				packageCache: {},
-				plugin: plugins
+				plugin: plugins,
+                standalone: "onStart",
 			} )
 			.bundle()
 			.on( "error", gutil.log.bind( gutil, "Browserify Error" ) )
 			.pipe( source( entry ) )
+            .pipe( insert.append( "var OnNewShellUI = function( shellUI ) { this.onStart( shellUI ); }" ) )
 			.pipe( rename( { extname: ".bundle.js" } ) )
 			.pipe( gulp.dest( "./build" ) );
 	} );
