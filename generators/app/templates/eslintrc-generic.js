@@ -1,4 +1,9 @@
 
 module.exports = {
-    extends: [ 'mfiles' ]
+    extends: [ 'mfiles' ],
+
+    env: {
+        browser: true,
+        jquery: true
+    }
 }

@@ -11,7 +11,7 @@ var MFilesGenerator = yeoman.Base.extend(  {
 
         var projectTypes = [
             { value: 'generic', name: 'Generic JavaScript project' },
-            { value: 'uiext', name: 'M-Files Vault Application' },
+            { value: 'uiext', name: 'M-Files Vault Application (WIP)' },
         ];
 
         var basicPrompts = [
@@ -23,7 +23,7 @@ var MFilesGenerator = yeoman.Base.extend(  {
             {
                 type: 'input',
                 name: 'projectName',
-                message: 'Project name:'
+                message: 'Project name:',
             },
             {
                 type: 'input',
@@ -78,6 +78,13 @@ var MFilesGenerator = yeoman.Base.extend(  {
 
     writeTemplates: function() {
 
+        this.props.packageName = this.props.projectName.toLowerCase().replace( / /g, '-' );
+
+        this.fs.copyTpl(
+            this.templatePath( 'README.ejs.md' ),
+            this.destinationPath( 'README.md' ),
+            this.props );
+
         this.fs.copyTpl(
             this.templatePath( 'package.ejs.json' ),
             this.destinationPath( 'package.json' ),
@@ -130,5 +137,7 @@ module.exports = MFilesGenerator.extend( {
         }
     },
 
-    // install: function() { this.installDependencies(); }
+    install: function() {
+        this.installDependencies( { npm: true, bower: false  } );
+    }
 } );
