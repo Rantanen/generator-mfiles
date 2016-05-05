@@ -7,9 +7,18 @@ var eslint = require( "gulp-eslint" );
 
 var name = "<%= projectName %>";
 
+// Specify the script file paths.
 var paths = {
-	scripts: [ "**/*.js", "!node_modules", "!gulpfile.js" ],
-}
+	scripts: [
+
+		// By default use all js-files.
+		"**/*.js",
+
+		// Excluding the files under node_modules and this gulpfile.js
+		"!node_modules",
+		"!gulpfile.js"
+	],
+};
 
 gulp.task( "lint", function() {
 

@@ -18,7 +18,7 @@ var MFilesGenerator = yeoman.Base.extend(  {
             {
                 type: 'input',
                 name: 'author',
-                message: 'Author name:'
+                message: 'Project author name:'
             },
             {
                 type: 'input',
@@ -139,5 +139,12 @@ module.exports = MFilesGenerator.extend( {
 
     install: function() {
         this.installDependencies( { npm: true, bower: false  } );
+    },
+
+    end: function() {
+        this.log( 'The project has been set up!' );
+        this.log( '' );
+        this.log( 'You can use \'gulp lint\' to check the code files for style issues.' );
+        this.log( 'The files linted can be configured by editing the \'gulpfile.js\' file.' );
     }
 } );
