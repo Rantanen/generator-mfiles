@@ -20,8 +20,10 @@ var paths = {
 	],
 };
 
+// 'lint' task.
 gulp.task( "lint", function() {
 
+    // Run the scripts thruogh ESLint.
 	return gulp.src( paths.scripts )
 		.pipe( eslint() )
 		.pipe( eslint.format() )

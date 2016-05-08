@@ -33,7 +33,7 @@ var MFilesGenerator = yeoman.Base.extend(  {
             {
                 type: 'list',
                 name: 'projectType',
-                message: 'Project type:',
+                message: 'Select project type:',
                 choices: projectTypes,
                 default: 0
             }
@@ -57,7 +57,7 @@ var MFilesGenerator = yeoman.Base.extend(  {
             {
                 type: 'checkbox',
                 name: 'environments',
-                message: 'Client environments:',
+                message: 'Select client environments:',
                 choices: [
                     { value: 'shellui', name: 'Shell UI' },
                     { value: 'vaultui', name: 'Vault UI' },
@@ -115,7 +115,6 @@ var MFilesGenerator = yeoman.Base.extend(  {
             this.destinationPath( 'appdef.json' ),
             this.props );
 
-        // mkdirp.sync( 'lib' );
         this.props.environments.forEach( function( e ) {
             this.fs.copyTpl(
                 this.templatePath( 'uiext-' + e + '.ejs.js' ),
