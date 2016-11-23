@@ -1,6 +1,6 @@
 'use strict';
 var yeoman = require( 'yeoman-generator' );
-var uuid = require( 'node-uuid' );
+var uuid = require( 'uuid' );
 
 // var mkdirp = require( 'mkdirp' );
 
